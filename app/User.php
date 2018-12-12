@@ -10,6 +10,6 @@ class User extends Model
 
     public function role()
     {
-        return hasOne('App/Role','role_id');
+        return $this->hasOne('App/Role','role_id');
     }
 }
