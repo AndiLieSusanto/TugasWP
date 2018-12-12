@@ -12,16 +12,14 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
 
-        $data = User::where('email',$email)->first();
+        $data = User::with('role')->where('email',$email)->first();
 
         if(!empty ($data))
         {
             if($data->password == $password)
             {
-                $role = $data->role();
-
                 session(['name' => $data->name]);
-                session(['role' => $role->description]);
+                session(['role' => $data->role->description]);
                 session(['user_id' => $data->id]);
             }
             else
