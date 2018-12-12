@@ -1,0 +1,18 @@
+login
+register
+home (guest , member/admin)
+
+add forum
+update forum
+forum thread
+update thread
+profile page
+inbox page
+my forum page
+edit/update user page
+
+ms user page
+ms add user
+ms forum page
+ms catrogry
+edit categroy page
