@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use Cookie;
 class LoginController extends Controller
 {
@@ -11,12 +12,31 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
 
+        $data = User::where('email','=',$email)->first();
+        if($data > 0)
+        {
+            if($data->password == $password)
+            {
+                $role = $data->role();
+
+                session(['name' => $data->name]);
+                session(['role' => $role->description]);
+                session(['user_id' => $data->id]);
+            }
+            else
+            {
+                return redirect()->back()->with('alert','Invalid Password!');
+            }
+        }
+        else
+        {
+            return redirect()->back()->with('alert','Invalid Password!');
+        }
+
         //Cookie::queue(Cookie::make('name', 'value', 'minutes')); set cookies
         // session(['key' => 'value']); set session
 
-        session(['name' => 'Andi']);
-        session(['role' => 'Admin']);
-        session(['user_id' => '1']);
+        
     }
 
     public function index()

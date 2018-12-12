@@ -11,7 +11,7 @@ class ThreadController extends Controller
     public function create()
     {
     	$categories = Category::get();
-        return view('thread-add',compact('categories'));
+        return view('member.thread-add',compact('categories'));
     }
 
     public function store(Request $request)
