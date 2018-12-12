@@ -8,8 +8,8 @@
 
         <div class="card-body">
             <form method="POST" action="{{ url('/login') }}">
-                @csrf
-
+                {{ csrf_field() }}
+                
                 <div class="form-group row">
                     <label for="email" class="col-sm-4 col-form-label text-md-right font-weight-bold">E-Mail Address</label>
 

@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Cookie; // untuk set cookie
+use Cookie;
 class LoginController extends Controller
 {
     public function login(Request $request)
     {
+        $email = $request->email;
+        $password = $request->password;
+
         //Cookie::queue(Cookie::make('name', 'value', 'minutes')); set cookies
         // session(['key' => 'value']); set session
 
