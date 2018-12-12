@@ -12,8 +12,9 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
 
-        $data = User::where('email','=',$email)->first();
-        if($data > 0)
+        $data = User::where('email',$email)->first();
+
+        if(!empty ($data))
         {
             if($data->password == $password)
             {
