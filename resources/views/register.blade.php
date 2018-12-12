@@ -10,7 +10,7 @@
 
         <div class="card-body">
             <form method="POST" action="{{ url('/register') }}" enctype="multipart/form-data">
-                @csrf
+                {{ csrf_field() }}
 
 				<div class="form-group row">
                     <label class="col-sm-4 col-form-label text-md-right font-weight-bold">

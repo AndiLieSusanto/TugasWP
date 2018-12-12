@@ -42,6 +42,7 @@ class UserController extends Controller
         $image = $request->file('photo');
         $fileName = uniqid('img_'); // for unique
         $path = public_path('images');
+        $fileName = $fileName . '.' . \File::extension($image->getClientOriginalName());
         $image->move($path,$fileName);
         //----
 
