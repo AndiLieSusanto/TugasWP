@@ -20,7 +20,7 @@
 				@elseif ($thread->status == 1)
 					<span class="col-lg-1 bg-success text-light rounded text-lg-center ">Open</span>
 				@endif
-				<p class="col-lg-12">Category : </p>
+				<p class="col-lg-12">Category : {{ $thread->category->description }}</p>
 				<p class="col-lg-12">Posted at : {{ date('d M Y H:i:s', strtotime($thread->created_at)) }}</p>
 				<div class="col-lg-12 bg-light rounded" style="padding: 10px;">
 					{{ $thread->description }}

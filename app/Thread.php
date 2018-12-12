@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
-    public function thread() {
-    	return $this->hasOne(Category::class); 
+    public function category() {
+    	return $this->hasOne('App\Category','id','category_id'); 
     }
 }

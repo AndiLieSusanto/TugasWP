@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-    	$threads = Thread::paginate(5);
+    	$threads = Thread::with('category')->paginate(5);
         return view('home',compact('threads'));
     }
 }
