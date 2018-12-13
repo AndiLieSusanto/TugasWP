@@ -24,25 +24,29 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>a</td>
-                  <td>a</td>
-                  <td>asd</td>
-                  <td>asd</td>
-                  <td>asd</td>
-                  <td class="row">
-                      <a href="#" class="col-lg-6 btn btn-warning">Edit</a>
-                      <a href="#" class="col-lg-6 btn btn-danger">Delete</a>
-                  </td>
+                  @foreach ($users as $user)
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->role->description}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->phone}}</td>
+                        <td>{{$user->address}}</td>
+                        <td>{{$user->birth_date}}</td>
+                        <td>{{$user->gender->description}}</td>
+                        <td class="container">
+                            <a href="{{ url('msUser/edit/'.$user->id) }}" class=" btn btn-warning">Edit</a>
+                            <a href="#" class=" btn btn-danger">Delete</a>
+                        </td>
 
 
-                </tr>
+                      </tr>
+                  @endforeach
+
 
               </tbody>
-            </table>`
+            </table>
+            {{$users->render("pagination::bootstrap-4")}}
         </div>
     </div>
 @stop

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
 class User extends Model
 {
@@ -12,4 +13,10 @@ class User extends Model
     {
         return $this->hasOne('App\Role','id','role_id');
     }
+
+    public function gender()
+    {
+        return $this->hasOne('App\Gender','id','gender_id');
+    }
+
 }
