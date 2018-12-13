@@ -10,20 +10,33 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//global
+Route::get('logout', 'UserController@logout');
 
 // ROUTE GUESS
 Route::get('', 'HomeController@index');
-Route::get('login','LoginController@index');
+Route::get('login','LoginController@index')->middleware('auth.guess');
 Route::post('login','LoginController@login');
 Route::get('register','UserController@create')->middleware('auth.guess'); // page ini berarti cuman bisa di akses guess
 Route::post('register','UserController@store');
 
 
 // ROUTE MEMBER
-
+Route::get('member/', 'HomeController@indexMember');
 
 
 // ROUTE ADMIN
+Route::get('admin/', 'HomeController@indexMember');
+
+
+
+
+
+
+
+
+
+
 Route::get('thread',function(){
 	return view('forum-thread');
 });
