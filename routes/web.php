@@ -36,9 +36,12 @@ Route::get('inbox',function(){
 Route::get('myForum',function(){
     return view('member.thread-myForum');
 });
-Route::get('msuser',function(){
-    return view('admin.master-user');
-});
+
+Route::get('/msUser','MasterController@index');
+Route::get('/msUser/create','MasterController@create');
+Route::post('/msUser/store','MasterController@store');
+Route::get('/msUser/edit/{id}','MasterController@edit');
+Route::put('/msUser/update/{id}','MasterController@update');
 
 Route::get('/thread/create', 'ThreadController@create');
 Route::post('/thread/store', 'ThreadController@store');
