@@ -11,7 +11,7 @@
         <div class="card-body">
             <form method="POST" action="{{ url('msUser/update'.$old->id) }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
-
+                <input type="hidden" name="_method" value="put"/
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label text-md-right font-weight-bold">
                         <span class="text-danger mr-1">*</span>Name
