@@ -19,4 +19,8 @@ class User extends Model
         return $this->hasOne('App\Gender','id','gender_id');
     }
 
+    public function thread()
+    {
+    	return $this->belongsToMany('App\Thread');
+    }
 }

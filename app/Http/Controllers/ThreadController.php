@@ -5,21 +5,54 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Thread;
 use App\Category;
-
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 class ThreadController extends Controller
 {
     public function create()
     {
     	$categories = Category::get();
-        return view('member.thread-add',compact('categories'));
+
+        if(session('role') == 'member')
+        {
+            return view('member.thread-add',compact('categories'));
+        }
+        else if(session('role') == 'admin')
+        {
+            return view('admin.thread-add',compact('categories'));
+        }
     }
 
     public function store(Request $request)
     {
-        $thread = new Thread;
-        $thread->create($request->all());
+        
 
-        return redirect('/');;
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'category' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator)->withInput(Input::all());
+        }
+
+        $thread = new Thread;
+        $thread->name = $request->name;
+        $thread->description = $request->description;
+        $thread->category_id = $request->category;
+        $thread->status = 1;
+        $thread->save();
+        $user_id = Session('user_id');
+        $thread->user()->sync([$user_id]);
+
+        if(session('role') == 'member')
+        {
+            return redirect('member/');
+        }
+        else if(session('role') == 'admin')
+        {
+            return redirect('admin/');
+        }
     }
 
     public function show(){

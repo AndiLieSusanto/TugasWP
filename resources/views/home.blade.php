@@ -28,9 +28,6 @@
 		</div>
 		@endforeach
 		{{$threads->links("pagination::bootstrap-4")}}
-		
-		<btn class="btn btn-add-forum bg-secondary text-light">
-				+
-		</btn>
+
 	</div>
 @stop
