@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
+use App\Rating;
 use Carbon\Carbon;
 use App\Rules\containStreet;
 
@@ -69,5 +70,14 @@ class UserController extends Controller
         session()->flush();
 
         return redirect(url('/'));
+    }
+
+    public function viewProfile(Request $request)
+    {
+        $user = User::where('id','=',$request->id)->first();
+        $ratingNegative = Rating::where([['user_id','=',$request->id],['score','=','0']])->count();
+        $ratingPositive = Rating::where([['user_id','=',$request->id],['score','=','1']])->count();
+
+        return view('member.profile',compact('user','ratingNegative','ratingPositive'));
     }
 }
