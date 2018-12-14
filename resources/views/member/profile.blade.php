@@ -15,7 +15,13 @@
                             <button type="submit" class="btn btn-primary py-2 px-4 absolute profile-edit-btn">
                                 Edit
                             </button>
-
+                            
+                            <button type="submit" class="btn btn-danger absolute offset-lg-10 col-lg-1">
+                                -
+                            </button>
+                            <button type="submit" class="btn btn-success absolute offset-lg-11 col-lg-1">
+                                +
+                            </button>
                     </div>
 
                     <div class="col-lg-2 mb-3 font-weight-bold">Name</div>
@@ -38,6 +44,19 @@
                 </div>
             </div>
         </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="container row">
+                    <p class="col-lg-12 mb-0">Message</p>
+                    <textarea name="name" class="col-lg-12 rounded border-dark"></textarea>
+                    <div class="col-lg-12 ">
+                        <button type="submit" class="btn btn-primary py-2 px-4">
+                            Send
+                        </button>
 
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @stop

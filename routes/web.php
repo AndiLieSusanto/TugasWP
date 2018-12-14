@@ -23,7 +23,9 @@ Route::post('register','UserController@store')->middleware('auth.guess');
 // ROUTE MEMBER
 Route::get('member/', 'HomeController@indexMember')->middleware('auth.member');
 Route::get('member/thread/create', 'ThreadController@create')->middleware('auth.member');
-
+Route::get('member/profile/', function(){
+    return view('member.profile');
+})->middleware('auth.member');
 // ROUTE ADMIN
 Route::get('admin/', 'HomeController@indexMember')->middleware('auth.admin');
 

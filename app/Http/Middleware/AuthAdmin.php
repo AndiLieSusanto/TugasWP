@@ -16,9 +16,16 @@ class AuthAdmin
     public function handle($request, Closure $next)
     {
         $role = session('role', 'guess'); // kalau role nya gak ada default nya guess
-        if($role != 'Admin') // jadi kalau role nya gak di set maka dia pasti guess
+        if($role != 'admin') // jadi kalau role nya gak di set maka dia pasti guess
         {
-            return redirect()->back();
+            if($role == 'guess')
+            {
+                return redirect(url(''));
+            }
+            else if($role == 'member')
+            {
+                return redirect(url('member/'));
+            }
         }
         return $next($request);
     }

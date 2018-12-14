@@ -18,7 +18,14 @@ class AuthMember
         $role = session('role', 'guess'); // kalau role nya gak ada default nya guess
         if($role != 'member') // jadi kalau role nya gak di set maka dia pasti guess
         {
-            return redirect()->back();
+            if($role == 'guess')
+            {
+                return redirect(url(''));
+            }
+            else if($role == 'admin')
+            {
+                return redirect(url('admin/'));
+            }
         }
         return $next($request);
     }

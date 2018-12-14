@@ -18,7 +18,14 @@ class AuthGuess
         $role = session('role', 'guess'); // kalau role nya gak ada default nya guess
         if($role != 'guess') // jadi kalau role nya gak di set maka dia pasti guess
         {
-            return redirect()->back();
+            if($role == 'admin')
+            {
+                return redirect(url('admin/'));
+            }
+            else if($role == 'member')
+            {
+                return redirect(url('member/'));
+            }
         }
         return $next($request);
     }
