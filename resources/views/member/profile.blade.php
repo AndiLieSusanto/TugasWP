@@ -24,7 +24,6 @@
                             </button>
                         @endif
                     </div>
-
                     <div class="col-lg-2 mb-3 font-weight-bold">Name</div>
                     <div class="col-lg-10">{{ $user->name}}</div>
                     <div class="col-lg-2 mb-3 font-weight-bold">Popularity</div>

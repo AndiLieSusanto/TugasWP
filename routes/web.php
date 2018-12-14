@@ -19,7 +19,6 @@ Route::get('login','LoginController@index')->middleware('auth.guess');
 Route::post('login','LoginController@login')->middleware('auth.guess');
 Route::get('register','UserController@create')->middleware('auth.guess'); // page ini berarti cuman bisa di akses guess
 Route::post('register','UserController@store')->middleware('auth.guess');
-
 // ROUTE MEMBER
 Route::get('member/', 'HomeController@indexMember')->middleware('auth.member');
 Route::get('member/thread/create', 'ThreadController@create')->middleware('auth.member');
