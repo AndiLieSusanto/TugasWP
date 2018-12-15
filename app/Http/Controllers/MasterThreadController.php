@@ -65,7 +65,7 @@ class MasterThreadController extends Controller
             return Redirect::back()->withErrors($validator)->withInput(Input::all());
         }
 
-        $category = new Category();
+        $category = Category::find($id);
         $category->description = $request->get('name');
         $category->save();
 
