@@ -29,7 +29,7 @@
                           <tr>
                             <td>{{$t->name}}</td>
                             <td>{{$t->category->description}}</td>
-                            <td>1</td>
+                            <td>{{$t->user[0]->name}}</td>
                             <td>{{$t->description}}</td>
                             @if ($flag == 0)
                                 <td>Closed</td>
