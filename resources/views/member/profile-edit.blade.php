@@ -9,7 +9,7 @@
         </div>
 
         <div class="card-body">
-            <form method="POST" action="{{ url('member/profileupdate') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('member/profile-update') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
 				<div class="form-group row">

@@ -12,8 +12,17 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Category::class, 50)->create()->each(function ($category) {
-	        $category->save();
-	    });
+
+        $category = new Category();
+        $category->description = 'K-pop';
+        $category->save();
+
+        $category = new Category();
+        $category->description = 'Rocket Science';
+        $category->save();
+
+        $category = new Category(); 
+        $category->description = 'Laravel Programming';
+        $category->save();
     }
 }

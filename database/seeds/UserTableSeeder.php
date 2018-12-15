@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+
 class UserTableSeeder extends Seeder
 {
     /**
@@ -11,27 +12,28 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => 'member',
-            'email' => 'member@email.com',
-            'password' => '123456',
-            'phone' => '123456789',
-            'address' => $faker->address,
-            'profile_picture' => 'images/profile_default',
-            'birth_date' => now(),
-            'role_id' => '1',
-            'gender_id' => '1',
-        ]);
-        DB::table('users')->insert([
-            'name' => 'admin',
-            'email' => 'admin@email.com',
-            'password' => '123456',
-            'phone' => '123456789',
-            'address' => $faker->address,
-            'profile_picture' => 'images/profile_default',
-            'birth_date' => now(),
-            'role_id' => '2',
-            'gender_id' => '1',
-        ]);
+        $user = new User();
+        $user->name = 'member';
+        $user->email = 'member@email.com';
+        $user->password = '123456';
+        $user->phone = '123456789';
+        $user->address = 'Jalan Sandang D5A';
+        $user->profile_picture = 'images/profile_default.jpg';
+        $user->birth_date = now();
+        $user->role_id = '1';
+        $user->gender_id = '1';
+        $user->save();
+
+        $user = new User();
+        $user->name = 'admin';
+        $user->email = 'admin@email.com';
+        $user->password = '123456';
+        $user->phone = '123456789';
+        $user->address = 'Jalan Sandang D5A';
+        $user->profile_picture = 'images/profile_default.jpg';
+        $user->birth_date = now();
+        $user->role_id = '2';
+        $user->gender_id = '2';
+        $user->save();
     }
 }
