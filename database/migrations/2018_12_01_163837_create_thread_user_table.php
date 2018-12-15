@@ -16,7 +16,6 @@ class CreateThreadUserTable extends Migration
         Schema::create('thread_user', function (Blueprint $table) {
             $table->integer('thread_id');
             $table->integer('user_id');
-            $table->timestamps();
         });
     }
 

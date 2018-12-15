@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
         $user->profile_picture = 'images/profile_default.jpg';
         $user->birth_date = now();
         $user->role_id = '1';
-        $user->gender_id = '1';
+        $user->gender = 'Male';
         $user->save();
 
         $user = new User();
@@ -33,7 +33,7 @@ class UserTableSeeder extends Seeder
         $user->profile_picture = 'images/profile_default.jpg';
         $user->birth_date = now();
         $user->role_id = '2';
-        $user->gender_id = '2';
+        $user->gender = 'Female';
         $user->save();
     }
 }

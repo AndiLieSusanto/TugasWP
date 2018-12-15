@@ -12,7 +12,7 @@
                 <div class="row relative">
                     <div class="form-group">
                         @if($user->id == session('user_id'))
-                            <button type="submit" class="btn btn-primary py-2 px-4 absolute profile-edit-btn" onclick="window.location='{{ url('member/profile-update') }}">
+                            <button type="submit" class="btn btn-primary py-2 px-4 absolute profile-edit-btn" onclick="window.location='{{ url('member/profile-update') }}'">
                                 Edit
                             </button>
                         @else
@@ -38,7 +38,7 @@
                     <div class="col-lg-2 mb-3 font-weight-bold">Birthday</div>
                     <div class="col-lg-10">{{ $user->birth_date }}</div>
                     <div class="col-lg-2 mb-3 font-weight-bold">Gender</div>
-                    <div class="col-lg-10">{{ $user->gender->description }}</div>
+                    <div class="col-lg-10">{{ $user->gender }}</div>
                     <div class="col-lg-2 mb-3 font-weight-bold">Address</div>
                     <div class="col-lg-10">{{ $user->address }}</div>
                 </div>

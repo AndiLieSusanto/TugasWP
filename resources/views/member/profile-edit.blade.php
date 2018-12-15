@@ -18,7 +18,7 @@
                 	</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
+                        <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}">
                     </div>
                 </div>
 				
@@ -28,7 +28,7 @@
                 	</label>
 
                     <div class="col-md-6">
-                        <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                        <input id="email" type="email" class="form-control" name="email" value="{{ $user->email }}">
                     </div>
                 </div>
 
@@ -38,7 +38,8 @@
                     </label>
 
                     <div class="col-md-6">
-                        <input id="password" type="password" class="form-control" name="password">
+                        <input id="password" type="password" class="form-control" name="password"
+                        value="{{ $user->password }}">
                     </div>
                 </div>
 
@@ -48,7 +49,7 @@
                     </label>
 
                     <div class="col-md-6">
-                        <input id="confirmpassword" type="password" class="form-control" name="confirm_password">
+                        <input id="confirmpassword" type="password" class="form-control" name="confirm_password" value="{{ $user->password }}">
                     </div>
                 </div>
 
@@ -58,7 +59,7 @@
                 	</label>
 
                     <div class="col-md-6">
-                        <input id="phone" type="text" class="form-control" name="phone" value="{{ old('phone') }}">
+                        <input id="phone" type="text" class="form-control" name="phone" value="{{ $user->phone }}">
                     </div>
                 </div>
 
@@ -68,7 +69,7 @@
                 	</label>
 
                     <div class="col-md-6">
-                        <textarea class="form-control" rows="2" id="address" name="address">{{ old('address') }}</textarea>
+                        <textarea class="form-control" rows="2" id="address" name="address">{{ $user->address }}</textarea>
                     </div>
                 </div>
 
@@ -78,7 +79,7 @@
                 	</label>
 
                     <div class="col-md-6">
-                        <input id="birthday" type="text" class="form-control" name="birthday" placeholder="yyyy-mm-dd" value="{{ old('birthday') }}">
+                        <input id="birthday" type="text" class="form-control" name="birthday" placeholder="yyyy-mm-dd" value="{{ substr($user->birth_date,0,10) }}">
                     </div>
                 </div>
 
@@ -89,8 +90,13 @@
 
                     <div class="col-md-6">
                         <div class="radio py-2">
-						  	<label class="mr-3"><input type="radio" name="gender" class="mr-2" value="1">Male</label>
-						  	<label><input type="radio" name="gender" class="mr-2" value="2">Female</label>
+                            @if($user->gender == 'Male')
+    						  	<label class="mr-3"><input type="radio" name="gender" class="mr-2" value="Male" checked="checked">Male</label>
+                                <label><input type="radio" name="gender" class="mr-2" value="Female">Female</label>
+                            @else
+						  	   <label class="mr-3"><input type="radio" name="gender" class="mr-2" value="Male" >Male</label>
+                                <label><input type="radio" name="gender" class="mr-2" value="Female" checked="checked">Female</label>
+                            @endif
 						</div>
                     </div>
                 </div>
@@ -109,17 +115,9 @@
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-md-6 offset-md-4">
-                        <label>
-                            <input type="checkbox" name="agree" id="agree" class="mr-1">By registering to this website. I agree term and condition
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group row">
                     <div class="col-md-8 offset-md-4">
                         <button type="submit" class="btn btn-primary py-2 px-4">
-                            Login
+                            Update
                         </button>
                     </div>
                 </div>

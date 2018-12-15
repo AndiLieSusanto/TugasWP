@@ -58,7 +58,7 @@ class UserController extends Controller
         $temp = $temp->format('Y-m-d');
         $user->birth_date = $temp;
         $user->role_id = 1;
-        $user->gender_id = 1;
+        $user->gender = $request->get('gender');
         $user->save();
 
         return redirect(url('/'));

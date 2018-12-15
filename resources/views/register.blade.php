@@ -89,8 +89,8 @@
 
                     <div class="col-md-6">
                         <div class="radio py-2">
-						  	<label class="mr-3"><input type="radio" name="gender" class="mr-2" value="1">Male</label>
-						  	<label><input type="radio" name="gender" class="mr-2" value="2">Female</label>
+						  	<label class="mr-3"><input type="radio" name="gender" class="mr-2" value="Male">Male</label>
+						  	<label><input type="radio" name="gender" class="mr-2" value="Female">Female</label>
 						</div>
                     </div>
                 </div>
