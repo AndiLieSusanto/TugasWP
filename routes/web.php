@@ -24,7 +24,8 @@ Route::post('register','UserController@store')->middleware('auth.guess');
 Route::get('member/', 'HomeController@indexMember')->middleware('auth.member');
 Route::get('member/thread/create', 'ThreadController@create')->middleware('auth.member');
 Route::get('member/profile/{id}', 'UserController@viewProfile')->middleware('auth.member');
-Route::get('member/profile-update', 'UserController@updateSelfProfile')->middleware('auth.member');
+Route::get('member/profile-update', 'UserController@viewSelfEdit')->middleware('auth.member');
+Route::post('member/profile-update', 'UserController@postSelfEdit')->middleware('auth.member');
 // ROUTE ADMIN
 Route::get('admin/', 'HomeController@indexMember')->middleware('auth.admin');
 
