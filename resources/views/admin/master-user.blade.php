@@ -6,7 +6,7 @@
     <div class="card">
         <div class="card-header">
             <h3>List Of User</h3>
-            <a href="#" class="btn btn-success">Add New User</a>
+            <a href="{{url('msuser/create')}}" class="btn btn-success">Add New User</a>
         </div>
         <div class="card-body">
             <table class="table">
@@ -35,7 +35,7 @@
                         <td>{{$user->birth_date}}</td>
                         <td>{{$user->gender->description}}</td>
                         <td class="container">
-                            <a href="{{ url('msUser/edit/'.$user->id) }}" class=" btn btn-warning">Edit</a>
+                            <a href="{{ url('msuser/edit/'.$user->id) }}" class=" btn btn-warning">Edit</a>
                             <a href="#" class=" btn btn-danger">Delete</a>
                         </td>
 

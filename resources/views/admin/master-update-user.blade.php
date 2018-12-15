@@ -9,18 +9,19 @@
         </div>
 
         <div class="card-body">
-            <form method="POST" action="{{ url('msUser/update'.$old->id) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('msuser/update'.$old->id) }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                <input type="hidden" name="_method" value="put"/
+                <input type="hidden" name="_method" value="put"/>
                 <div class="form-group row">
-                    <label class="col-sm-4 col-form-label text-md-right font-weight-bold">
+                    <label class="col-sm-4 col-form-label text-lg-right font-weight-bold">
                         <span class="text-danger mr-1">*</span>Name
                     </label>
 
-                    <div class="col-md-6">
+                    <div class="col-sm-6">
                         <input id="name" type="text" class="form-control" name="name" value="{{ $old->name }}">
                     </div>
                 </div>
+
 
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label text-md-right font-weight-bold">

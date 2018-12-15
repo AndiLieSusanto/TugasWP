@@ -9,7 +9,7 @@
         </div>
 
         <div class="card-body">
-            <form method="POST" action="{{ url('/msUser/store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('/msuser/store') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="form-group row">

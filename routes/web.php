@@ -50,11 +50,15 @@ Route::get('myForum',function(){
     return view('member.thread-myForum');
 });
 
-Route::get('/msUser','MasterController@index');
-Route::get('/msUser/create','MasterController@create');
-Route::post('/msUser/store','MasterController@store');
-Route::get('/msUser/edit/{id}','MasterController@edit');
-Route::put('/msUser/update/{id}','MasterController@update');
+//ROUTE ADMIN USER
+Route::get('/msuser','MasterController@index');
+Route::get('/msuser/create','MasterController@create');
+Route::post('/msuser/store','MasterController@store');
+Route::get('/msuser/edit/{id}','MasterController@edit');
+Route::put('/msuser/update/{id}','MasterController@update');
+
+//ROUTE ADMIN THREAD
+Route::get('/msthread','MasterThreadController@index');
 
 Route::get('/thread/create', 'ThreadController@create');
 Route::post('/thread/store', 'ThreadController@store');
