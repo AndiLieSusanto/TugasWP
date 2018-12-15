@@ -12,7 +12,7 @@
                 <div class="row relative">
                     <div class="form-group">
                         @if($user->id == session('user_id'))
-                            <button type="submit" class="btn btn-primary py-2 px-4 absolute profile-edit-btn">
+                            <button type="submit" class="btn btn-primary py-2 px-4 absolute profile-edit-btn" onclick="window.location='{{ url('member/profile-update') }}">
                                 Edit
                             </button>
                         @else

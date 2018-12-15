@@ -80,4 +80,11 @@ class UserController extends Controller
 
         return view('member.profile',compact('user','ratingNegative','ratingPositive'));
     }
+
+    public function updateSelfProfile()
+    {
+        $user = User::where('id','=',session('user_id'))->first();
+
+        return view('member.profile-edit',compact('user'));
+    }
 }
