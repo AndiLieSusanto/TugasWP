@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+
 class UserTableSeeder extends Seeder
 {
     /**
@@ -16,7 +17,7 @@ class UserTableSeeder extends Seeder
             'email' => 'member@email.com',
             'password' => '123456',
             'phone' => '123456789',
-            'address' => $faker->address,
+            'address' => 'Jalan sandang D5a',
             'profile_picture' => 'images/profile_default',
             'birth_date' => now(),
             'role_id' => '1',
@@ -27,7 +28,7 @@ class UserTableSeeder extends Seeder
             'email' => 'admin@email.com',
             'password' => '123456',
             'phone' => '123456789',
-            'address' => $faker->address,
+            'address' => 'Jalan KH Syahdan',
             'profile_picture' => 'images/profile_default',
             'birth_date' => now(),
             'role_id' => '2',
