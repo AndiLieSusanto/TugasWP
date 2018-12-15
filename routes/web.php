@@ -26,6 +26,9 @@ Route::get('member/thread/create', 'ThreadController@create')->middleware('auth.
 Route::get('member/profile/{id}', 'UserController@viewProfile')->middleware('auth.member');
 Route::get('member/profile-update', 'UserController@viewSelfEdit')->middleware('auth.member');
 Route::post('member/profile-update', 'UserController@postSelfEdit')->middleware('auth.member');
+Route::get('member/inbox', 'UserController@showInbox')->middleware('auth.member');
+Route::post('member/send-message', 'UserController@sendMessage')->middleware('auth.member');
+Route::post('member/delete-message', 'UserController@deleteMessage')->middleware('auth.member');
 // ROUTE ADMIN
 Route::get('admin/', 'HomeController@indexMember')->middleware('auth.admin');
 

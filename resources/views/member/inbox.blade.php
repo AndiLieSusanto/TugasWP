@@ -3,17 +3,21 @@
 @section('title','Inbox')
 
 @section('content')
-    <div class="card mb-3">
-            <div class="card-header relative">
-                <button type="button" name="button" class="btn btn-danger absolute absolute-right-top "><i class="fa fa-search"></i>Delete</button>
-                <h3 class="text-primary">Name</h3>
-                <p>Time</p>
-
-            </div>
-            <div class="card-body">
-                Wow Cool!!!
-            </div>
-
-    </div>
-
+    @foreach($messages as $message)
+        <div class="card mb-3">
+                <div class="card-header relative">
+                    <form action="{{url('member/delete-message')}}" method="post">
+                        {{ @csrf_field() }}
+                        <input type="text" name="message_id" class="d-none" value="{{$message->id}}">
+                        <button type="submit" name="button" class="btn btn-danger absolute absolute-right-top "><i class="fa fa-search"></i>Delete</button>
+                    </form>
+                    
+                    <h3 class="text-primary">{{$message->user[0]->name}}</h3>
+                    <p>{{$message->created_at}}</p>
+                </div>
+                <div class="card-body">
+                    {{$message->message}}
+                </div>
+        </div>
+    @endforeach
 @stop

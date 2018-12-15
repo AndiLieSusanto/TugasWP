@@ -9,6 +9,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
 use App\Rating;
+use App\Message;
 use Carbon\Carbon;
 use App\Rules\containStreet;
 
@@ -131,6 +132,30 @@ class UserController extends Controller
 
         session(['profile_picture' => 'images/'.$fileName]); //update profile picture
         return redirect(url('member/profile/'.session('user_id')));
+    }
 
+    public function showInbox()
+    {
+        $messages = Message::where('user_id',session('user_id'))->get();
+
+        return view('member.inbox',compact('messages'));
+    }
+
+    public function deleteMessage(Request $request)
+    {
+        $message = Message::find($request->message_id);
+        $message->delete();
+        return redirect()->back();
+    }
+
+    public function sendMessage(Request $request)
+    {
+        $message = new Message();
+        $message->user_id = $request->destination_user_id;
+        $message->message = $request->message;
+        $message->save();
+        $message->user()->sync([session('user_id')]);
+
+        return redirect()->back();
     }
 }

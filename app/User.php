@@ -23,4 +23,9 @@ class User extends Model
     {
     	return $this->belongsToMany('App\Thread');
     }
+
+    public function message()
+    {
+        return $this->belongsToMany('App\Message');
+    }
 }

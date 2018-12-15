@@ -48,16 +48,18 @@
         @if($user->id != session('user_id'))
             <div class="card mt-4">
                 <div class="card-body">
-                    <div class="container row">
+                    <form class="container row" method="post" enctype="multipart/form-data" action="{{ url('member/send-message')}}">
+                        {{@csrf_field()}}
                         <p class="col-lg-12 mb-0">Message</p>
-                        <textarea name="name" class="col-lg-12 rounded border-dark"></textarea>
+                        <textarea name="message" class="col-lg-12 rounded border-dark"></textarea>
+                        <input type="text" name="destination_user_id" class="d-none" value="{{$user->id}}">
                         <div class="col-lg-12 ">
                             <button type="submit" class="btn btn-primary py-2 px-4">
                                 Send
                             </button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         @endif
     </div>
