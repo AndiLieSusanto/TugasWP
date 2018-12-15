@@ -12,8 +12,7 @@ class MasterController extends Controller
 
     public function index()
     {
-        //
-        $users = User::with('role')->with('gender')->paginate(5);
+        $users = User::paginate(5);
         return view('admin.master-user',compact('users'));
     }
     //

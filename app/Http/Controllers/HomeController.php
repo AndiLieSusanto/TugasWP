@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-    	$threads = Thread::with('category')->paginate(5);
+        $test = $request->search;
+    	$threads = Thread::paginate(5);
         return view('home',compact('threads'));
     }
     public function indexMember()
