@@ -5,7 +5,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3>List Of Forum</h3>
+            <h3>List of Forum</h3>
         </div>
         <div class="card-body">
             <table class="table">

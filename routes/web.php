@@ -59,6 +59,11 @@ Route::put('/msuser/update/{id}','MasterController@update');
 
 //ROUTE ADMIN THREAD
 Route::get('/msthread','MasterThreadController@index');
+Route::get('/mscategory','MasterThreadController@categoryindex');
+Route::post('/mscategory/store','MasterThreadController@categorystore');
+Route::get('/mscategory/edit/{id}','MasterThreadController@categoryedit');
+Route::put('/mscategory/update/{id}','MasterThreadController@categoryupdate');
+Route::delete('/mscategory/delete/{id}','MasterThreadController@categorydelete');
 
 Route::get('/thread/create', 'ThreadController@create');
 Route::post('/thread/store', 'ThreadController@store');
