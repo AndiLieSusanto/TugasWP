@@ -61,15 +61,32 @@ class ThreadController extends Controller
 
     public function threadShow(Request $request){
         $thread = Thread::where('id','=',$request->id)->first();
-
+        $posts = Post::where('thread_id','=',$request->id)->paginate(5);
         $role = session('role','guess');
         if($role == 'guess')
         {
-            return view('thread-view',compact('thread'));
+            return view('thread-view',compact('thread','posts'));
         }
         else if($role == 'member')
         {
-            return view('member.thread-view',compact('thread'));
+            return view('member.thread-view',compact('thread','posts'));
+        }
+    }
+
+    public function threadShowWithFilter(Request $request){
+        $thread = Thread::where('id','=',$request->id)->first();
+        $posts = Post::where('thread_id','=',$request->id)->where('description','like','%'.$request->keyword.'%')->orWhereHas('users',( $query ) use ( $parameterValues ){
+                $query->where('name','like','%'.$request->keyword.'%');
+            })->paginate(5);
+        $role = session('role','guess');
+        
+        if($role == 'guess')
+        {
+            return view('thread-view',compact('thread','posts'));
+        }
+        else if($role == 'member')
+        {
+            return view('member.thread-view',compact('thread','posts'));
         }
     }
 

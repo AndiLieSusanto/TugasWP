@@ -18,17 +18,17 @@
 				<p class="col-lg-12 ">Posted at: {{$thread->created_at}}</p>
 				<p class="col-lg-12 mb-0">Description:</p>
 				<p class="col-lg-12 ">{{ $thread->description }}</p>
-				<div class="row col-lg-12  rounded">
+				<form class="row col-lg-12  rounded" action="get" url>
 					<input type="text" name="search" class="col-lg-11" style="margin: 0;" placeholder="Search This Forum's Thread By Content or Owner">
 					<span class="col-lg-1 btn btn-primary text-light">Search</span>
-				</div>
+				</form>
 			</div>
 		</div>
 		<div class="container card-body">
 			@if($thread->post->isEmpty())
 				<p class="col-lg-12">This forum doesnt have any thread</p>
 			@else
-				@foreach($thread->post as $p)
+				@foreach($posts as $p)
 					<div class="card mb-3">
 						<div class="card-header">
 							<a href="{{ url('member/profile/'.$p->user[0]->id)}}">
@@ -42,6 +42,8 @@
 						</div>
 					</div>
 				@endforeach
+
+				{{$posts->links("pagination::bootstrap-4")}}
 			@endif
 		</div>
 	</div>
