@@ -9,10 +9,10 @@
         <div class="card-header relative">
             <div class="row absolute absolute-right-top">
                 @if($thread->status == 1)
-                <form method="get" action="{{url('member/thread-update/'.$thread->id)}}">
+                <form method="get" action="{{url('admin/thread-update/'.$thread->id)}}">
                     <button class="btn btn-warning" type="submit" name="edit">Edit</button>
                 </form>
-                <form method="post" action="{{url('member/thread-close')}}">
+                <form method="post" action="{{url('admin/thread-close')}}">
                     {{@csrf_field()}}
                     <input type="text" name="id" value="{{$thread->id}}" class="d-none">
                     <button class="btn btn-danger" type="submit" name="close">Close</button>

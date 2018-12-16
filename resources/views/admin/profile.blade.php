@@ -12,11 +12,11 @@
                 <div class="row relative">
                     <div class="form-group">
                         @if($user->id == session('user_id'))
-                            <button type="submit" class="btn btn-primary py-2 px-4 absolute profile-edit-btn" onclick="window.location='{{ url('member/profile-update') }}'">
+                            <button type="submit" class="btn btn-primary py-2 px-4 absolute profile-edit-btn" onclick="window.location='{{ url('admin/profile-update') }}'">
                                 Edit
                             </button>
                         @else
-                            <form method="post" action="{{url('member/give-rating')}}">
+                            <form method="post" action="{{url('admin/give-rating')}}">
                                 {{ @csrf_field() }}
                                 <input type="text" name="score" value="0" class="d-none">
                                 <input type="text" name="id" value="{{$user->id}}" class="d-none">
@@ -24,7 +24,7 @@
                                     -
                                 </button>
                             </form>
-                            <form method="post" action="{{url('member/give-rating')}}">
+                            <form method="post" action="{{url('admin/give-rating')}}">
                                 {{ @csrf_field() }}
                                 <input type="text" name="score" value="1" class="d-none">
                                 <input type="text" name="id" value="{{$user->id}}" class="d-none">
@@ -58,7 +58,7 @@
         @if($user->id != session('user_id'))
             <div class="card mt-4">
                 <div class="card-body">
-                    <form class="container row" method="post" enctype="multipart/form-data" action="{{ url('member/send-message')}}">
+                    <form class="container row" method="post" enctype="multipart/form-data" action="{{ url('admin/send-message')}}">
                         {{@csrf_field()}}
                         <p class="col-lg-12 mb-0">Message</p>
                         <textarea name="message" class="col-lg-12 rounded border-dark"></textarea>

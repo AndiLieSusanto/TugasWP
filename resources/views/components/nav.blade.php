@@ -15,13 +15,13 @@
 	</div>
 	@elseif(session('role', 'guess') == 'admin')
 	<div class="row">
-		<a class="center offset-lg-1 col-lg-1 text-light" href={{url('member/')}}>DivForum</a>
-		<a class="center col-lg-1 text-light" href={{url('member/myforum')}}>My Forum</a>
-		<a class="center col-lg-1 text-light" href={{url('member/myforum')}}>Master User</a>
-		<a class="center col-lg-1 text-light" href={{url('member/myforum')}}>Master Forum</a>
-		<a class="center col-lg-1 text-light" href={{url('member/myforum')}}>Master Category</a>
-		<a class="text-right col-lg-3 text-light " href={{url('member/profile/'.session('user_id'))}}><img style="border-radius: 50%; width: 25px; height: 25px;" src="{{URL::asset(session('profile_picture'))}}"> {{session('name')}}</a>
-		<a class="center col-lg-1 text-light" href={{url('member/Inbox')}}>Inbox</a>
+		<a class="center offset-lg-1 col-lg-1 text-light" href={{url('admin/')}}>DivForum</a>
+		<a class="center col-lg-1 text-light" href={{url('admin/myforum')}}>My Forum</a>
+		<a class="center col-lg-1 text-light" href={{url('msuser')}}>Master User</a>
+		<a class="center col-lg-1 text-light" href={{url('msthread')}}>Master Forum</a>
+		<a class="center col-lg-1 text-light" href={{url('mscategory')}}>Master Category</a>
+		<a class="text-right col-lg-3 text-light " href={{url('admin/profile/'.session('user_id'))}}><img style="border-radius: 50%; width: 25px; height: 25px;" src="{{URL::asset(session('profile_picture'))}}"> {{session('name')}}</a>
+		<a class="center col-lg-1 text-light" href={{url('admin/inbox')}}>Inbox</a>
 		<a class="center col-lg-1 text-light" href={{url('logout')}}>Logout</a>
 	</div>
 	@elseif(session('role', 'guess') == 'member')

@@ -4,17 +4,17 @@
 
 @section('content')
 	<div class="card">
-        <div class="card-header font-weight-bold">Forum Add</div>
+        <div class="card-header font-weight-bold">Forum Add  [ {{$errors->first()}} ] </div>
 
         <div class="card-body">
-            <form method="POST" action="/thread/store">
-                @csrf
-
+            <form method="POST" action="{{url('admin/thread-update')}}">
+                {{@csrf_field()}}
+                <input type="text" name="id" value="{{$thread->id}}" class="d-none">
                 <div class="form-group row">
                     <label for="name" class="col-sm-4 col-form-label text-md-right font-weight-bold">Name</label>
 
                     <div class="col-md-6">
-                        <input id="name" type="name" name="name" class="form-control">
+                        <input id="name" type="name" name="name" class="form-control" value="{{$thread->name}}">
                     </div>
                 </div>
 
@@ -33,11 +33,9 @@
                     <label for="description" class="col-md-4 col-form-label text-md-right font-weight-bold">Description</label>
 
                     <div class="col-md-6">
-						<textarea class="form-control" rows="2" id="description" name="description"></textarea>
+						<textarea class="form-control" rows="2" id="description" name="description">{{$thread->description}}</textarea>
                     </div>
                 </div>
-
-				<input type="text" name="status" class="d-none" value="1">
 
                 <div class="form-group row">
                     <div class="col-md-8 offset-md-4">

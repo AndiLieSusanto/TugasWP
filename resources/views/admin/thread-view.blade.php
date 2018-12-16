@@ -18,7 +18,7 @@
 				<p class="col-lg-12 ">Posted at: {{$thread->created_at}}</p>
 				<p class="col-lg-12 mb-0">Description:</p>
 				<p class="col-lg-12 ">{{ $thread->description }}</p>
-				<form class="row col-lg-12  rounded" method="post" action="{{url('member/thread')}}">
+				<form class="row col-lg-12  rounded" method="post" action="{{url('admin/thread')}}">
 					{{@csrf_field()}}
 					<input type="text" name="id" value="{{ $thread->id}}" class="d-none">
 					<input type="text" name="keyword" class="col-lg-11" style="margin: 0;" placeholder="Search This Forum's Thread By Content or Owner">
@@ -36,11 +36,11 @@
 				@foreach($posts as $p)
 					<div class="card mb-3">
 						<div class="card-header row">
-							<a href="{{ url('member/profile/'.$p->user[0]->id)}}" class="col-lg-10 mb-0">
+							<a href="{{ url('admin/profile/'.$p->user[0]->id)}}" class="col-lg-10 mb-0">
 								<h4>{{ $p->user[0]->name }}</h4>
 							</a>
 							@if($p->user[0]->id == session('user_id'))
-								<form action="{{url('member/thread-delete-post')}}" method="post" class="col-lg-1">
+								<form action="{{url('admin/thread-delete-post')}}" method="post" class="col-lg-1">
 									{{@csrf_field()}}
 									<input type="text" name="id" class="d-none" value="{{$p->id}}">
 									<button class="btn btn-danger">
@@ -48,7 +48,7 @@
 									</button>
 								</form>
 								
-								<a href="{{ url('member/thread-edit-post/'.$p->id) }}" class="col-lg-1 btn btn-warning">
+								<a href="{{ url('admin/thread-edit-post/'.$p->id) }}" class="col-lg-1 btn btn-warning">
 									edit
 								</a>
 							@endif
@@ -71,7 +71,7 @@
 			<div class="card-header ">
 				<h4 class="mb-0">Post New Thread</h4>
 			</div>
-			<form class="card-body" method="post" action="{{ url('member/thread-add-post')}}">
+			<form class="card-body" method="post" action="{{ url('admin/thread-add-post')}}">
 				<div class="container row">
 					{{ @csrf_field() }}
 					<p class="col-lg-12 mb-0">Content</p>
@@ -90,7 +90,7 @@
 			<div class="card-header ">
 				<h4 class="mb-0">Edit Current Thread</h4>
 			</div>
-			<form class="card-body" method="post" action="{{ url('member/thread-add-post')}}">
+			<form class="card-body" method="post" action="{{ url('admin/thread-add-post')}}">
 				<div class="container row">
 					{{ @csrf_field() }}
 					<p class="col-lg-12 mb-0">Content</p>

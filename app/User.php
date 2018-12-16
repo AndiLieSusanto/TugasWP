@@ -26,4 +26,9 @@ class User extends Model
     {
         return $this->belongsToMany('App\Post');
     }
+
+    public function rating()
+    {
+        return $this->belongsToMany('App\Rating');
+    }
 }

@@ -76,8 +76,8 @@ class UserController extends Controller
     public function viewProfile(Request $request)
     {
         $user = User::where('id','=',$request->id)->first();
-        $ratingNegative = Rating::where([['user_id','=',$request->id],['score','=','0']])->count();
-        $ratingPositive = Rating::where([['user_id','=',$request->id],['score','=','1']])->count();
+        $ratingNegative = Rating::where([['user_id','=',$request->id],['score','=','0']])->get()->count();
+        $ratingPositive = Rating::where([['user_id','=',$request->id],['score','=','1']])->get()->count();
 
         return view('member.profile',compact('user','ratingNegative','ratingPositive'));
     }
@@ -157,6 +157,17 @@ class UserController extends Controller
         $message->save();
         $message->user()->sync([session('user_id')]);
 
+        return redirect()->back();
+    }
+
+    public function giveReputation(Request $request)
+    {
+        $rating = new Rating();
+
+        $rating->score = $request->score;
+        $rating->user_id = $request->id;
+        $rating->save();
+        $rating->user()->sync([session('user_id')]);
         return redirect()->back();
     }
 }

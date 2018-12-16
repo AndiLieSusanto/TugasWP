@@ -7,8 +7,8 @@
         <div class="card-header font-weight-bold">Forum Add</div>
 
         <div class="card-body">
-            <form method="POST" action="/thread/store">
-                @csrf
+            <form method="POST" action="{{url('admin/thread-store')}}">
+                {{ @csrf_field() }}
 
                 <div class="form-group row">
                     <label for="name" class="col-sm-4 col-form-label text-md-right font-weight-bold">Name</label>

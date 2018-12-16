@@ -7,7 +7,7 @@
         <div class="card-header font-weight-bold">Forum Add</div>
 
         <div class="card-body">
-            <form method="POST" action="/thread/store">
+            <form method="POST" action="{{url('member/thread-store')}}">
                 {{ @csrf_field() }}
 
                 <div class="form-group row">
