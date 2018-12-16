@@ -13,8 +13,9 @@
 		
 		@foreach($threads as $thread)
 		<div class="row jumbotron" style="padding: 0; padding: 10px;">
-			
-				<h4 class="col-lg-11">{{ $thread->name}}</h4>
+				<a href="{{ url('member/thread/'.$thread->id)}}" style="text-decoration: none;" class="col-lg-11">
+						<h4 >{{ $thread->name}} </h4>
+					</a>
 				@if ($thread->status == 0)
 					<span class="col-lg-1 bg-danger text-light rounded text-lg-center ">Closed</span>
 				@elseif ($thread->status == 1)

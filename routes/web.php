@@ -30,6 +30,8 @@ Route::post('member/profile-update', 'UserController@postSelfEdit')->middleware(
 Route::get('member/inbox', 'UserController@showInbox')->middleware('auth.member');
 Route::post('member/send-message', 'UserController@sendMessage')->middleware('auth.member');
 Route::post('member/delete-message', 'UserController@deleteMessage')->middleware('auth.member');
+Route::get('member/thread/{id}','ThreadController@threadShow')->middleware('auth.member');
+Route::post('member/thread-add-post','ThreadController@addPost')->middleware('auth.member');
 // ROUTE ADMIN
 Route::get('admin/', 'HomeController@indexMember')->middleware('auth.admin');
 

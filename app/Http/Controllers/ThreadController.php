@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Thread;
 use App\Category;
+use App\Post;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 class ThreadController extends Controller
@@ -66,5 +67,20 @@ class ThreadController extends Controller
         {
             return view('thread-view',compact('thread'));
         }
+        else if($role == 'member')
+        {
+            return view('member.thread-view',compact('thread'));
+        }
+    }
+
+    public function addPost(Request $request)
+    {
+        $post = new Post;
+        $post->description = $request->post;
+        $post->thread_id = $request->thread_id;
+        $post->save();
+        $post->user()->sync([session('user_id')]);
+
+        return redirect()->back();
     }
 }
