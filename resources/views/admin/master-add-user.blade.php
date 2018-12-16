@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="form-group row">
-					<label for="Role" class="col-md-4 col-form-label text-md-right font-weight-bold">Category</label>
+					<label for="Role" class="col-md-4 col-form-label text-md-right font-weight-bold">Role</label>
 					<div class="col-md-6">
 						<select class="form-control" name="role">
 							@foreach ($roles as $role)
@@ -79,7 +79,7 @@
                     </label>
 
                     <div class="col-md-6">
-                        <textarea class="form-control" rows="2" id="address" name="address">{{ old('address') }}</textarea>
+                        <textarea class="form-control" rows="2" id="address" name="address"></textarea>
                     </div>
                 </div>
 

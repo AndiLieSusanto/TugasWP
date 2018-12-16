@@ -65,6 +65,7 @@ Route::get('/msuser/create','MasterController@create');
 Route::post('/msuser/store','MasterController@store');
 Route::get('/msuser/edit/{id}','MasterController@edit');
 Route::put('/msuser/update/{id}','MasterController@update');
+Route::delete('/msuser/delete/{id}','MasterController@destroy');
 
 //ROUTE ADMIN THREAD
 Route::get('/msthread','MasterThreadController@index');
