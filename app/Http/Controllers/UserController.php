@@ -136,7 +136,7 @@ class UserController extends Controller
 
     public function showInbox()
     {
-        $messages = Message::where('user_id',session('user_id'))->get();
+        $messages = Message::where('user_id',session('user_id'))->paginate(10);
 
         return view('member.inbox',compact('messages'));
     }
@@ -145,6 +145,7 @@ class UserController extends Controller
     {
         $message = Message::find($request->message_id);
         $message->delete();
+        $message->user()->detach();
         return redirect()->back();
     }
 

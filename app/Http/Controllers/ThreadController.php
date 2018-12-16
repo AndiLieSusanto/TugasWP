@@ -25,8 +25,6 @@ class ThreadController extends Controller
 
     public function store(Request $request)
     {
-        
-
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'category' => 'required'
@@ -60,4 +58,13 @@ class ThreadController extends Controller
         return view('thread-view');
     }
 
+    public function threadShow(Request $request){
+        $thread = Thread::where('id','=',$request->id)->first();
+
+        $role = session('role','guess');
+        if($role == 'guess')
+        {
+            return view('thread-view',compact('thread'));
+        }
+    }
 }

@@ -20,4 +20,5 @@
                 </div>
         </div>
     @endforeach
+    {{$messages->render("pagination::bootstrap-4")}}
 @stop
