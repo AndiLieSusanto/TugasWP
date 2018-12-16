@@ -63,6 +63,7 @@ class ThreadController extends Controller
         $thread = Thread::where('id','=',$request->id)->first();
         $posts = Post::where('thread_id','=',$request->id)->paginate(5);
         $role = session('role','guess');
+
         if($role == 'guess')
         {
             return view('thread-view',compact('thread','posts'));
@@ -73,20 +74,43 @@ class ThreadController extends Controller
         }
     }
 
-    public function threadShowWithFilter(Request $request){
-        $thread = Thread::where('id','=',$request->id)->first();
-        $posts = Post::where('thread_id','=',$request->id)->where('description','like','%'.$request->keyword.'%')->orWhereHas('users',( $query ) use ( $parameterValues ){
-                $query->where('name','like','%'.$request->keyword.'%');
-            })->paginate(5);
+    public function redirectToFilter(Request $request){
+
         $role = session('role','guess');
         
         if($role == 'guess')
         {
-            return view('thread-view',compact('thread','posts'));
+            return redirect(url('thread/'.$request->id.'/'.$request->keyword));
         }
         else if($role == 'member')
         {
-            return view('member.thread-view',compact('thread','posts'));
+            return redirect(url('member/thread/'.$request->id.'/'.$request->keyword));
+        }
+        else if($role == 'admin')
+        {
+            return redirect(url('admin/thread/'.$request->id.'/'.$request->keyword));
+        }
+    }
+
+    public function threadShowWithFilter(Request $request){
+        $thread = Thread::where('id','=',$request->id)->first();
+        $posts = Post::where('thread_id','=',$request->id)->where('description','like','%'.$request->keyword.'%')->orWhereHas('user',function( $query ) use ($request) {
+                $query->where('name','like','%'.$request->keyword.'%');
+            })->paginate(5);
+        $keyword = $request->keyword;
+        $role = session('role','guess');
+        
+        if($role == 'guess')
+        {
+            return view('thread-view',compact('thread','posts','keyword'));
+        }
+        else if($role == 'member')
+        {
+            return view('member.thread-view',compact('thread','posts','keyword'));
+        }
+        else if($role == 'admin')
+        {
+            return view('admin.thread-view',compact('thread','posts','keyword'));
         }
     }
 
