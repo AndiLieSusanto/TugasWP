@@ -33,10 +33,16 @@
                         <td>{{$user->phone}}</td>
                         <td>{{$user->address}}</td>
                         <td>{{$user->birth_date}}</td>
-                        <td>{{$user->gender->description}}</td>
-                        <td class="container">
-                            <a href="{{ url('msuser/edit/'.$user->id) }}" class=" btn btn-warning">Edit</a>
-                            <a href="#" class=" btn btn-danger">Delete</a>
+                        <td>{{$user->gender}}</td>
+                        <td class="row container">
+                            <div class="col-sm-6">
+                                <a href="{{url('msuser/edit/'.$user->id)}}" class=" btn btn-warning" >Edit</a>
+                            </div>
+                            <form action="{{url('msuser/delete/'.$user->id)}}" class="col-sm-6" method="post">
+                                {{csrf_field()}}
+                                <input type="hidden" name="_method" value="delete"/>
+                                <button  class=" btn btn-danger">Delete</button>
+                            </form>
                         </td>
 
 
