@@ -5,6 +5,7 @@
 @section('content')
 
 	<div class="card mb-5">
+	<div class="card mb-5">
 		<div class="container card-header">
 			<div class="row " style="padding: 0; padding: 10px;">
 				<h4 class="col-lg-11 mb-0">{{$thread->name}}</h4>
@@ -28,7 +29,7 @@
 			@if($thread->post->isEmpty())
 				<p class="col-lg-12">This forum doesnt have any thread</p>
 			@else
-				@foreach($thread->post as $p)
+				@foreach($posts as $p)
 					<div class="card mb-3">
 						<div class="card-header">
 							<h4 class="col-lg-12 mb-0">{{ $p->user[0]->name }}</h4>
@@ -40,43 +41,9 @@
 						</div>
 					</div>
 				@endforeach
+
+				{{$posts->links("pagination::bootstrap-4")}}
 			@endif
 		</div>
 	</div>
-	@if($thread->post->isEmpty())
-	<div class="card">
-		<div class="card-header ">
-			<h4 class="mb-0">Post New Thread</h4>
-		</div>
-		<div class="card-body">
-			<form class="container row">
-				<p class="col-lg-12 mb-0">Content</p>
-				<textarea name="name" class="col-lg-12 rounded border-dark"></textarea>
-				<div class="col-lg-12 ">
-					<button type="submit" class="btn btn-primary py-2 px-4">
-						Post
-					</button>
-				</div>
-			</form>
-		</div>
-	</div>
-	@else
-	<div class="card">
-		<div class="card-header ">
-			<h4 class="mb-0">Edit Current Thread</h4>
-		</div>
-		<form class="card-body">
-			<div class="container row">
-				<p class="col-lg-12 mb-0">Content</p>
-				<textarea name="name" class="col-lg-12 rounded border-dark"></textarea>
-				<div class="col-lg-12 ">
-					<button type="submit" class="btn btn-primary py-2 px-4">
-						Edit
-					</button>
-				</div>
-			</div>
-		</form>
-	</div>
-	@endif
-
 @stop
