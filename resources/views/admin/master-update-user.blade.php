@@ -9,7 +9,7 @@
         </div>
 
         <div class="card-body">
-            <form method="POST" action="{{ url('msuser/update'.$old->id) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('msuser/update/'.$old->id) }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <input type="hidden" name="_method" value="put"/>
                 <div class="form-group row">
