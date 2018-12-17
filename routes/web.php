@@ -22,6 +22,7 @@ Route::post('register','UserController@store')->middleware('auth.guess');
 Route::get('thread/{id}','ThreadController@threadShow')->middleware('auth.guess');
 // ROUTE MEMBER
 Route::get('member/', 'HomeController@indexMember')->middleware('auth.member');
+Route::post('member/','HomeController@index')->middleware('auth.member');
 Route::get('member/thread-create', 'ThreadController@create')->middleware('auth.member');
 Route::post('member/thread-store', 'ThreadController@store')->middleware('auth.member');
 Route::get('member/profile/{id}', 'UserController@viewProfile')->middleware('auth.member');

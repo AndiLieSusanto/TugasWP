@@ -26,7 +26,7 @@
               <tbody>
                   @foreach ($users as $user)
                       <tr>
-                        <th scope="row">1</th>
+                        <th><img class="img-thumbnail" src="{{URL::asset($user->profile_picture)}}" ></th>
                         <td>{{$user->name}}</td>
                         <td>{{$user->role->description}}</td>
                         <td>{{$user->email}}</td>
@@ -35,10 +35,10 @@
                         <td>{{$user->birth_date}}</td>
                         <td>{{$user->gender}}</td>
                         <td class="row container">
-                            <div class="col-sm-6">
+                            <div class="">
                                 <a href="{{url('msuser/edit/'.$user->id)}}" class=" btn btn-warning" >Edit</a>
                             </div>
-                            <form action="{{url('msuser/delete/'.$user->id)}}" class="col-sm-6" method="post">
+                            <form action="{{url('msuser/delete/'.$user->id)}}" class="" method="post">
                                 {{csrf_field()}}
                                 <input type="hidden" name="_method" value="delete"/>
                                 <button  class=" btn btn-danger">Delete</button>

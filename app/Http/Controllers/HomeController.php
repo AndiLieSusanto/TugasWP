@@ -9,9 +9,9 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $test = $request->search;
-    	$threads = Thread::paginate(5);
-        return view('home',compact('threads'));
+        $threads = Thread::where('id','=',$request->id)->paginate(5);
+        $keyword = $request->keyword;
+        return view('member.home',compact('threads','keyword'));
     }
     public function indexMember()
     {
