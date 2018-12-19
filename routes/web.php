@@ -15,14 +15,17 @@ Route::get('logout', 'UserController@logout');
 
 // ROUTE GUESS
 Route::get('', 'HomeController@index')->middleware('auth.guess');
+Route::post('','HomeController@returnHome')->middleware('auth.guess');
+Route::get('find/{keyword}','HomeController@indexFilter')->middleware('auth.guess');
 Route::get('login','LoginController@index')->middleware('auth.guess');
 Route::post('login','LoginController@login')->middleware('auth.guess');
 Route::get('register','UserController@create')->middleware('auth.guess');
 Route::post('register','UserController@store')->middleware('auth.guess');
 Route::get('thread/{id}','ThreadController@threadShow')->middleware('auth.guess');
 // ROUTE MEMBER
-Route::get('member/', 'HomeController@indexMember')->middleware('auth.member');
-Route::post('member/','HomeController@index')->middleware('auth.member');
+Route::get('member/', 'HomeController@index')->middleware('auth.member');
+Route::post('member/','HomeController@returnHome')->middleware('auth.member');
+Route::get('member-/{keyword}','HomeController@indexFilter')->middleware('auth.member');
 Route::get('member/thread-create', 'ThreadController@create')->middleware('auth.member');
 Route::post('member/thread-store', 'ThreadController@store')->middleware('auth.member');
 Route::get('member/profile/{id}', 'UserController@viewProfile')->middleware('auth.member');
@@ -44,7 +47,9 @@ Route::get('member/thread-update/{id}','ThreadController@editThreadView')->middl
 Route::post('member/thread-update','ThreadController@editThread')->middleware('auth.member');
 Route::post('member/thread-close','ThreadController@closeThread')->middleware('auth.member');
 // ROUTE ADMIN
-Route::get('admin/', 'HomeController@indexmember')->middleware('auth.admin');
+Route::get('admin/', 'HomeController@index')->middleware('auth.admin');
+Route::post('admin/','HomeController@returnHome')->middleware('auth.admin');
+Route::get('admin-/{key-word}','HomeController@indexFilter')->middleware('auth.admin');
 Route::get('admin/thread-create', 'ThreadController@create')->middleware('auth.admin');
 Route::post('admin/thread-store', 'ThreadController@store')->middleware('auth.admin');
 Route::get('admin/profile/{id}', 'UserController@viewProfile')->middleware('auth.admin');

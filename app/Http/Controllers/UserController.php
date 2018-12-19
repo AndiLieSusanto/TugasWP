@@ -79,14 +79,33 @@ class UserController extends Controller
         $ratingNegative = Rating::where([['user_id','=',$request->id],['score','=','0']])->get()->count();
         $ratingPositive = Rating::where([['user_id','=',$request->id],['score','=','1']])->get()->count();
 
-        return view('member.profile',compact('user','ratingNegative','ratingPositive'));
+        $role = session('role','guess');
+
+        if($role == 'member')
+        {
+            return view('member.profile',compact('user','ratingNegative','ratingPositive'));
+        }
+        else if($role == 'admin')
+        {
+            return view('admin.profile',compact('user','ratingNegative','ratingPositive'));
+        }
     }
 
     public function viewSelfEdit()
     {
         $user = User::where('id','=',session('user_id'))->first();
 
-        return view('member.profile-edit',compact('user'));
+        $role = session('role','guess');
+
+        if($role == 'member')
+        {
+            return view('member.profile-edit',compact('user'));
+        }
+        else if($role == 'admin')
+        {
+            return view('admin.profile-edit',compact('user'));
+        }
+
     }
 
     public function postSelfEdit(Request $request)
@@ -102,7 +121,7 @@ class UserController extends Controller
             'address' => ['required',new containStreet],
             'gender' => 'required',
             'photo' => 'required|mimes:jpeg,png,jpg',
-            'birthday' => 'required|date|before:-13 years' 
+            'birthday' => 'required|date|before:-13 years'
         ]);
 
         if ($validator->fails()) {
@@ -131,14 +150,34 @@ class UserController extends Controller
         $user->save();
 
         session(['profile_picture' => 'images/'.$fileName]); //update profile picture
-        return redirect(url('member/profile/'.session('user_id')));
+
+        $role = session('role','guess');
+
+        if($role == 'member')
+        {
+            return redirect(url('member/profile/'.session('user_id')));
+        }
+        else if($role == 'admin')
+        {
+            return redirect(url('admin/profile/'.session('user_id')));
+        }
     }
 
     public function showInbox()
     {
         $messages = Message::where('user_id',session('user_id'))->paginate(10);
 
-        return view('member.inbox',compact('messages'));
+        $role = session('role','guess');
+
+        if($role == 'member')
+        {
+            return view('member.inbox',compact('messages'));
+        }
+        else if($role == 'admin')
+        {
+            return view('admin.inbox',compact('messages'));
+        }
+
     }
 
     public function deleteMessage(Request $request)

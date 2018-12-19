@@ -7,20 +7,61 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $threads = Thread::where('id','=',$request->id)->paginate(5);
+        $threads = Thread::with('category')->paginate(5);
+
+        $role = session('role','guess');
+
+        if($role == 'guess')
+        {
+            return view('home',compact('threads'));
+        }
+        else if($role == 'member')
+        {
+            return view('member.home',compact('threads'));
+        }
+        else if($role == 'admin')
+        {
+            return view('admin.home',compact('threads'));
+        }
+    }
+    public function indexFilter(Request $request)
+    {
+        $threads = Thread::where('description','like','%'.$request->keyword.'%')->orWhereHas('category',function( $query ) use ($request) {
+                $query->where('description','like','%'.$request->keyword.'%');
+            })->paginate(5);
+
+        $role = session('role','guess');
         $keyword = $request->keyword;
-        return view('member.home',compact('threads','keyword'));
+        if($role == 'guess')
+        {
+            return view('home',compact('threads','keyword'));
+        }
+        else if($role == 'member')
+        {
+            return view('member.home',compact('threads','keyword'));
+        }
+        else if($role == 'admin')
+        {
+            return view('admin.home',compact('threads','keyword'));
+        }
     }
-    public function indexMember()
+    public function returnHome(Request $request)
     {
-    	$threads = Thread::with('category')->paginate(5);
-        return view('member.home',compact('threads'));
-    }
-    public function indexAdmin()
-    {
-    	$threads = Thread::with('category')->paginate(5);
-        return view('admin.home',compact('threads'));
+        $role = session('role','guess');
+
+        if($role == 'guess')
+        {
+            return redirect(url('find/'.$request->keyword));
+        }
+        else if($role == 'member')
+        {
+            return redirect(url('member-/'.$request->keyword));
+        }
+        else if($role == 'admin')
+        {
+            return redirect(url('admin-/'.$request->keyword));
+        }
     }
 }
